@@ -5,6 +5,11 @@ public class Email {
     private String emailId;
     private String password;
 
+    private String currentPassword;
+    private String newPassword;
+
+
+
     public Email(String emailId){
         this.emailId = emailId;
         this.password = "Accio@123";
@@ -25,13 +30,14 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-        if(oldPassword.equals("Accio@123"))
+        boolean validNewpass=isValidNewPassword(newPassword);
+        if(oldPassword.equals(currentPassword))
         {
-            boolean validNewpass=isValidNewPassword(newPassword);
+
 
             if(validNewpass==true)
             {
-                System.out.println(newPassword);
+                this.password=newPassword;
             }
         }
     }
@@ -71,5 +77,28 @@ public class Email {
     public static boolean isSpecial(char ch)
     {
         return (ch=='@' || ch=='#' || ch=='&' || ch=='*' ||  ch=='$' || ch=='!' || ch=='%');
+    }
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCurrentPassword() {
+        return currentPassword;
+    }
+
+    public void setCurrentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 }
